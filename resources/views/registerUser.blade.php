@@ -8,23 +8,30 @@
 </head>
 <body>
     <h1>Register</h1>
-    <form action="{{ route('login.form') }}" method="GET" class="none" id="login">@method('GET')</form>
         
         <form method="POST" action="{{ route('register') }}" id="register">
+            @method('POST')
             @csrf
             <label for="name">Name :</label>
             <input type="text" id="name" name="name"  required>
             <br>
             <label for="email">Email :</label>
-            <input type="text" id="email" name="email" required> 
+            <input type="email" id="email" name="email" required> 
             <br>
             <label for="password">Password :</label>
-            <input type="text" id="password" name="password" required> 
+            <input type="password" id="password" name="password" placeholder="minimum of 8 characters." required> 
             <br>
 
+            {{-- <label for="password_confirmation">Confirm Password :</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" required>
+            <br>
+             --}}
             <button type="submit" form="register">Register</button>
-            <button type="submit" form="login">Login</button>
 
+        </form>
+
+        <form action="{{ route('login.form') }}" method="GET" class="none" id="login">
+            <button type="submit" form="login">Login</button>
         </form>
 
 

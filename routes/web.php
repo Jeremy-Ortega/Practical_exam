@@ -8,17 +8,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/posts', [PostController::class, 'viewPosts'])->name('view.posts');
-    Route::get('/posts/create', [PostController::class, 'createPost'])->name('create.post');
-    Route::post('/posts', [PostController::class, 'showCreateForm'])->name('create.form');
-});
+// Route::middleware('Auth')->group(function () {
+    Route::get('/posts/view', [PostController::class, 'viewAllPosts'])->name('view.posts');
 
+    Route::get('/posts/create', [PostController::class, 'showCreateForm'])->name('create.form');
+    Route::post('/posts', [PostController::class, 'createNewPost'])->name('create.post');
 
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
+    // wala pang crud
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// });
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::middleware('guest')->group(function () {
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+// });

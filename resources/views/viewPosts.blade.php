@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Posts</title>
+    <title>Post</title>
 </head>
 <body>
-    <h1>{{$user->name}} : All Posts </h1>
+    {{-- <h1>{{$user->name}} : All Posts </h1> --}}
 
         @foreach ($posts as $post)
             <hr>
             <h2>{{$post->title}}</h2>
             <p>{{$post->body}}</p>
+            {{-- update post / delete post  --}}
             <hr>
-        @endforeach
 
-        <form action=""></form>
-        <button type="submit"></button>
+        @endforeach
+    <h1>    gumagana    </h1>
+        
+    <a href="{{ route('create.form') }}">Create New Post?</a>
 </body>
 </html>
