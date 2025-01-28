@@ -17,7 +17,7 @@ class PostController extends Controller
     // show form creation post
     public function showCreateForm(){
         $users = User::all();
-        return view('createPost',compact('users'));
+        return view('createPost','users');
     }
     // creating post
     public function createNewPost(Request $request){
@@ -42,4 +42,9 @@ class PostController extends Controller
     public function EditPost(Post $post,Request $request){
         return view('UpdatePost',['post'=>$post]);
     }
+
+    public function viewPosts(User $user){
+    $posts = $user->posts;
+    return view('posts.index', compact('user', 'posts'));
+}
 }

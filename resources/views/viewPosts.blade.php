@@ -7,17 +7,13 @@
     <title>Post</title>
 </head>
 <body>
-    {{-- <h1>{{$user->name}} : All Posts </h1> --}}
-
-        @foreach ($posts as $post)
+        <h2>Hello {{$user->name}}</h2>
+        {{-- @foreach ($posts as $post)
             <hr>
             <h2>{{$post->title}}</h2>
             <p>{{$post->body}}</p>
-            {{-- update post / delete post  --}}
             <hr>
-
-        @endforeach
-    <h1>    gumagana    </h1>
+        @endforeach --}}
         
     <a href="{{ route('create.form') }}">Create New Post?</a>
 </body>

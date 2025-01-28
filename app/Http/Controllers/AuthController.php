@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -38,32 +39,23 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-        // $credentials = $request->only('email', 'password');
-        // $credentials = $request->validate([
-        //     'email' => 'required|string|email',
-        //     'password' => 'required|string',
-        // ]);
-
-        // $user = User::where('email', $credentials['email'])->first();
-
-        // if (Auth::attempt($credentials)) {
-        //     Auth::login($user);
-        //     return redirect()->route('view.posts');
-        // }
-        // else{
-        //     return redirect()->route('login.form');
-        // };
-
+        $credentials = $request->only('email', 'password');
         $credentials = $request->validate([
-            'email'=>'required',
-            'password'=>'required'
+            'email' => 'required|string|email',
+            'password' => 'required|string',
         ]);
 
-        if (auth()->guard('web')->attempt(['email' => $credentials['email'],'password'=>$credentials['password']])){
-            $request->session()->regenerate();
-        }
+        $user = User::where('email', $credentials['email'])->first();
 
-        return redirect()->route('login.form');
+        if (Auth::attempt($credentials)) {
+            Auth::login($user);
+            return view('viewPosts', compact('user'));
+
+        }
+        else{
+            return redirect()->route('login.form');
+        };
+
 
     }
 

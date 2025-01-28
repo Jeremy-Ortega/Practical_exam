@@ -9,12 +9,11 @@ Route::get('/', function () {
 });
 
 // Route::middleware('Auth')->group(function () {
-    Route::get('/posts/view', [PostController::class, 'viewAllPosts'])->name('view.posts');
+    Route::get('/posts/{user}', [PostController::class, 'viewAllPosts'])->name('view.posts');
 
     Route::get('/posts/create', [PostController::class, 'showCreateForm'])->name('create.form');
     Route::post('/posts', [PostController::class, 'createNewPost'])->name('create.post');
 
-    // wala pang crud
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // });

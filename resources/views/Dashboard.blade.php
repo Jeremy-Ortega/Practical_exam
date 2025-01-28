@@ -9,7 +9,6 @@
 <body>
     <h1>
         {{ $post->user->name }} Posts:
-
     </h1>
     @foreach ($posts as $post )
     <br>
@@ -18,7 +17,6 @@
     <p>{{$post->body}}</p>
     <hr> 
     <br>
-
     @endforeach
 
 </body>
